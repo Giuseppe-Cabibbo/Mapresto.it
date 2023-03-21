@@ -30,8 +30,8 @@ class CreateAnnouncement extends Component
             'body'=>$this->body,
             'price'=>$this->price,
         ]);
+        session()->flash('message', 'Annuncio inserito con successo');
         $this->cleanForm();
-        // $this->validate();
     }
 
     public function updated($propertyName){

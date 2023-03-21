@@ -1,6 +1,12 @@
 <div>
     <h1>Crea il tuo annuncio</h1>
 
+    @if (session()->has('message'))
+        <div class="flex flex-row justify-content-center my-2 alert alert-success">
+            {{session('message')}}
+        </div>
+    @endif
+    
     <form wire:submit.prevent="store">
         @csrf
 
@@ -17,8 +23,9 @@
         <div class="mb-3">
             <label for="price">Prezzo</label>
             <input wire:model='price' type="number" class="form-control">
+            @error('price')<span class="error alert alert-danger p-1">{{$message}}</span> @enderror
         </div>
         <button type="submit" class="btn btn-success shadow px-4 py-2">Crea</button>
-        @error('price')<span class="error alert alert-danger p-1">{{$message}}</span> @enderror
+        
     </form>
 </div>
