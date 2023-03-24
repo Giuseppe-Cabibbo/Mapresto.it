@@ -29,7 +29,7 @@ class CreateAnnouncement extends Component
     ];  
 
     public function store(){
-        $category = Category::find($this->category);
+        $category = Category::where('id',$this->category)->first();
         $announcement = $category->announcements()->create([
             'title'=>$this->title,
             'body'=>$this->body,
