@@ -10,7 +10,7 @@
         <div class="row">
             <div class="col-12">
                 @foreach ($announcements as $announcement)
-                <div class="row">
+                    <div class="row">
                         <div class="col-12 col-md-4 col-lg-4">
                             <div class="card-shadow" style="width: 18rem;">
                                 <img src="https://picsum.photos/200" class="card-img-top p-3 rounded" alt="">
@@ -24,8 +24,9 @@
                                 </div>
                             </div>
                         </div>                    
-                    @endforeach
-                </div>
+                    </div>
+                @endforeach
+                {{$announcements->links()}}
             </div>
         </div>
     </div>
