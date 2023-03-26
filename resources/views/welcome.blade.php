@@ -14,7 +14,7 @@
                                     <p class="card-text">{{$announcement->body}}</p>
                                     <p class="card-text">{{$announcement->price}}</p>
                                     <a href="{{route('announcements.show',compact('announcement'))}}" class="btn btn-success shadow">Visualizza</a>
-                                    <a href="" class="my-2 border-top pt-2 border-dark card-link shadow btn btn-success">Categoria: {{$announcement->category->name}}</a>
+                                    <a href="{{route('categoryShow', ['category'=>$announcement->category])}}" class="my-2 border-top pt-2 border-dark card-link shadow btn btn-success">Categoria: {{$announcement->category->name}}</a>
                                     <p class="card-footer">Pubblicato il: {{$announcement->created_at->format('d/m/Y')}}</p>
                                 </div>
                             </div>

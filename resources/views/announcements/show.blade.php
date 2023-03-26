@@ -23,7 +23,7 @@
                         </div>
                     </div>
                 </div> 
-                <button class="crousel-control-prev" type="button" data-bs-target="#showCarousel" data-bs-slide="next">
+                <button class="carousel-control-prev" type="button" data-bs-target="#showCarousel" data-bs-slide="next">
                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
                     <span class="visually-hidden">Next</span>
                 </button>                   
