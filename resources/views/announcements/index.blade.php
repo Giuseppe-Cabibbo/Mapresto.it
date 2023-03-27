@@ -5,7 +5,12 @@
                 <h1 class="display-2">Ecco i nostri annunci</h1>
             </div>
         </div>
-    </div> 
+    </div>
+    @if (session()->has('message'))
+    <div class="alert alert-success" role="alert">  
+      {{session('message')}}
+    </div>
+    @endif 
     <div class="container">
         <div class="row">
             <div class="col-12">

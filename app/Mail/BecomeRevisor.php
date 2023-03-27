@@ -18,11 +18,14 @@ class BecomeRevisor extends Mailable
      * Create a new message instance.
      */
     public $user;
-    public $request;
-    public function __construct(User $user, $request)
+
+    public function __construct(User $user)
     {
-        $this->user = $user;
-        $this->request=$request;
+        $this->user=$user;
+    }
+
+    public function build(){
+        return $this->from('giuseppe@gmail.it')->view('mail.become_revisor');
     }
 
     /**

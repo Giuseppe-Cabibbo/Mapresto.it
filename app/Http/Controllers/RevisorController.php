@@ -30,11 +30,11 @@ class RevisorController extends Controller
 
     public function becomeRevisor(){
         Mail::to('giuseppe@gmail.com')->send(new BecomeRevisor(Auth::user()));
-        return redirect(route('announcements.index'))->back()->with('message', 'Complimenti hai richiesto di diventare revisore');
+        return redirect()->back()->with('message', 'Complimenti hai richiesto di diventare revisore');
     }
 
     public function makeRevisor(User $user){
-        Artisan::call('presto:makeUserRevisor', ["email"=>$user->email]);
+        Artisan::call('presto:makeUserResivor', ["email"=>$user->email]);
         return redirect(route('announcements.index'))->with('message', 'Complimenti L\'utente è diventato revisore');
     }
 }

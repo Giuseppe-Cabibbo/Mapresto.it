@@ -20,4 +20,10 @@ class PublicController extends Controller
     public function contact(){
         return view('contact');
     }
+
+    public function setLocale($lang){
+        // dd('$lang');
+        session()->put('locale', $lang);
+        return redirect()->back();
+    }
 }

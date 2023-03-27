@@ -56,6 +56,15 @@
             </ul>
           </li>
           @endguest
+          <li class="nav-item">
+            <x-_locale lang="it" />
+          </li>
+          <li class="nav-item">
+            <x-_locale lang="en" />
+          </li>
+          <li class="nav-item">
+            <x-_locale lang="de" />
+          </li>
         </ul>
       </div>
     </div>
