@@ -10,18 +10,30 @@
         <div class="row">
             <div class="col-12">   
                 <div id="showCarousel" class="carousel slide" data-bs-ride="carousel">
-                    <div class="carousel-inner">
-                        <div class="carousel-item active">
-                            <img src="https://picsum.photos/200" class="img-fluid p-3 rounded" alt="">
-                            
-                        </div>
-                        <div class="carousel-item">
-                            <img src="https://picsum.photos/200" class="img-fluid p-3 rounded" alt="">
-                        </div>
-                        <div class="carousel-item">
-                            <img src="https://picsum.photos/200" class="img-fluid p-3 rounded" alt="">
-                        </div>
-                    </div>
+                        @if ($announcement->images) 
+                            <div class="carousel-inner">
+                                @foreach ($announcement->images as $image) 
+                                    <div class="carousel-item @if($loop->first)active @endif">
+                                        <img src="{{Storage::url($image->path)}}" class="img-fluid p-3 rounded" alt="">
+                                    </div>
+                                @endforeach
+                            </div>
+                        @else 
+                            <div class="carousel-inner">
+                                <div class="carousel-item active">
+                                <img src="https://picsum.photos/id/27/1200/400" class="img-fluid p-3 rounded" alt="...">
+                                
+                                </div>
+                                <div class="carousel-item">
+                                <img src="https://picsum.photos/id/28/1200/400" class="img-fluid p-3 rounded" alt="...">
+                                
+                                </div>
+                                <div class="carousel-item">
+                                <img src="https://picsum.photos/id/29/1200/400" class="img-fluid p-3 rounded" alt="...">
+                                
+                                </div>
+                            </div> 
+                        @endif
                 </div> 
                 <button class="carousel-control-prev" type="button" data-bs-target="#showCarousel" data-bs-slide="next">
                     <span class="carousel-control-next-icon" aria-hidden="true"></span>

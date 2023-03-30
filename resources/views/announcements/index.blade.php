@@ -14,11 +14,11 @@
     <div class="container">
         <div class="row">
             <div class="col-12">
-                @foreach ($announcements as $announcement)
-                    <div class="row">
-                        <div class="col-12 col-md-4 col-lg-4">
+                <div class="row">
+                    @forelse ($announcements as $announcement)
+                        <div class="col-12 col-md-4 col-lg-4 my-4">
                             <div class="card-shadow" style="width: 18rem;">
-                                <img src="https://picsum.photos/200" class="card-img-top p-3 rounded" alt="">
+                                <img src="{{!$announcement->images()->get()->isEmpty() ? Storage::url($announcement->images()->first()->path) : 'https://picsum.photos/200'}}" class="card-img-top p-3 rounded" alt="">
                                 <div class="card-body">
                                     <h5 class="card-title">{{$announcement->title}}</h5>
                                     <p class="card-text">{{$announcement->body}}</p>
@@ -29,9 +29,15 @@
                                 </div>
                             </div>
                         </div>                    
+                    @empty
+                    <div class="col-12">
+                        <div class="alert alert-warning py-3 shadow">
+                            <p class="lead">Non ci sono annunci per questa ricerca</p>
+                        </div>
                     </div>
-                @endforeach
-                {{$announcements->links()}}
+                    @endforelse
+                    {{$announcements->links()}}
+                </div>
             </div>
         </div>
     </div>
