@@ -13,17 +13,17 @@
             @csrf
             <div class="mb-3">
                 <label for="title">{{__('messages.Titolo Annuncio')}}</label>
-                <input wire:model='title' type="text" class="form-control">
+                <input wire:model.debounce.lazy="title" type="text" class="form-control">
                 @error('title')<span class="error alert alert-danger p-1">{{$message}}</span> @enderror
             </div>
             <div class="mb-3">
                 <label for="body">{{__('messages.Descrizione annuncio')}}</label>
-                <textarea wire:model="body" type="text" class="form-control"></textarea>
+                <textarea wire:model.debounce.lazy="body" type="text" class="form-control"></textarea>
                 @error('body')<span class="error alert alert-danger p-1">{{$message}}</span> @enderror
             </div>
             <div class="mb-3">
                 <label for="price">{{__('messages.Prezzo')}}</label>
-                <input wire:model='price' type="number" class="form-control">
+                <input wire:modeldebounce.lazy='price' type="number" class="form-control">
                 @error('price')<span class="error alert alert-danger p-1">{{$message}}</span> @enderror
             </div>
             <div class="mb-3">
