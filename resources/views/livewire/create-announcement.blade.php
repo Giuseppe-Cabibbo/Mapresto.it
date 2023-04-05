@@ -23,7 +23,7 @@
             </div>
             <div class="mb-3">
                 <label for="price">{{__('messages.Prezzo')}}</label>
-                <input wire:modeldebounce.lazy='price' type="number" class="form-control">
+                <input wire:model.debounce.lazy='price' type="number" class="form-control">
                 @error('price')<span class="error alert alert-danger p-1">{{$message}}</span> @enderror
             </div>
             <div class="mb-3">
