@@ -23,6 +23,7 @@ Route::get('/dettaglio/annuncio/{announcement}', [AnnouncementController::class,
 Route::get('/tutti/annunci', [AnnouncementController::class, 'indexAnnouncement'])->name('announcements.index');
 Route::get('contact', [PublicController::class, 'contact'])->name('contact');
 Route::post('/lingua/{lang}', [PublicController::class, 'setLocale'])->name('setLocale');
+Route::get('/ricerca/annuncio', [PublicController::class, 'searchAnnouncements'])->name('announcements.search');
 
 Route::middleware(['auth'])->group(function(){
     Route::get('nuovo/annuncio', [AnnouncementController::class, 'createAnnouncement'])->name('announcements.create');

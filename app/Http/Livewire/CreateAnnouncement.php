@@ -41,26 +41,15 @@ class CreateAnnouncement extends Component
         'images.max'=>'L\'immagine deve essere massimo 1Mb',
         'temporary_images.*.image'=>'Il file deve essere un\'immagine',
         'temporary_images.*.max'=>'L\'immagine deve essere massimo 1Mb',
-    ];  
-
-    public function updatedTemporaryImages($annuncio){
-        if($this->validate([
-            'temporary_images.*'=>'image|max:1024',
-        ])) {
-            foreach ($this->temporary_images as $image){
-                $this->images[] = $image;
-            }
-        }
-    }
-    public function removeImage($key){
-        if (in_array($key, array_keys($this->images))) {
-            unset($this->images[$key]);
-        }
+    ];
+    
+    public function updated($annuncio){
+        $this->validateOnly($annuncio);
     }
 
     public function store(){
         $this->validate();
-        $this->announcement = Category::find($this->category)-> announcements()->create($this->validate());
+        $this->announcement = Category::find($this->category)-> announcements()->create ($this->validate());
         if(count($this->images)){
             foreach($this->images as $image) {
                 // $this->announcement->images()->create(['path'=>$image->store('images', 'public')]);
@@ -76,22 +65,27 @@ class CreateAnnouncement extends Component
             }
             File::deleteDirectory(storage_path('/app/livewire-tmp'));
         }
-        session()->flash('message', 'Annuncio inserito con successo');
-            $this->cleanForm();
+        $this->announcement->user()->associate(Auth::user());
+        $this->announcement->save(); 
+        $this->reset();
+        //dd($this->temporary_images);
+        return redirect()->route('announcements.create')->with('message','Il tuo annuncio è stato creato ed è in attesa di revisione');
     }
 
-    public function updated($propertyName){
-        $this->validateOnly($propertyName);
+    public function updatedTemporaryImages(){
+        if($this->validate([
+            'temporary_images.*'=>'image|max:1024',
+        ])) {
+            foreach ($this->temporary_images as $image){
+                $this->images[] = $image;
+            }
+        }
     }
 
-    public function cleanForm(){
-        $this->title = '';
-        $this->body = '';
-        $this->price = '';
-        $this->category = '';
-        $this->images = [];
-        $this->temporary_images = [];
-        
+    public function removeImage($key){
+        if (in_array($key, array_keys($this->images))) {
+            unset($this->images[$key]);
+        }
     }
 
     public function render()
