@@ -5,13 +5,13 @@
     </div>
     @endif
     <div class="container-fluid">
-        <div class="row">
-            <div class="col-12">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-8 col-lg-6">
                 <h1 class="text-center">MaPresto</h1>
                 <p class="h2 my-2 fw-bold">{{__('messages.ultimiannunci')}}</p>
-                <div class="row">
+                <div class="row justify-content-center">
                     @foreach ($announcements as $announcement)
-                        <div class="col-12 col-md-4 col-lg-4">
+                        <div class="col-12 col-md-8 col-lg-6">
                             <div class="card-shadow" style="width: 18rem;">
                                 <img src="{{!$announcement->images()->get()->isEmpty() ? $announcement->images()->first()->getUrl(400,300) : 'https://picsum.photos/200'}}" class="card-img-top p-3 rounded" alt="">
                                 <div class="card-body">
