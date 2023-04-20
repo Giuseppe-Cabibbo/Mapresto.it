@@ -56,3 +56,9 @@ body {
 color: var(--corallo);
 border-bottom: 1px solid #ff6663;
 }
+
+/* Header */
+
+.matrix {
+  width: 100%;
+}
